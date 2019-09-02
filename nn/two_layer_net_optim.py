@@ -31,6 +31,10 @@ model = torch.nn.Sequential(
           torch.nn.ReLU(),
           torch.nn.Linear(config.H, config.D_out),
         )
+
+# Automatically log model topology and gradinets
+wandb.watch(model)
+
 loss_fn = torch.nn.MSELoss(reduction='sum')
 
 # Use the optim package to define an Optimizer that will update the weights of
